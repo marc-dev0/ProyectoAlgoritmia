@@ -11,8 +11,9 @@ import internalFrames.MenuVentas.VentaChocolate;
 import jDialogs.MenuAyuda.Acercade;
 
 import java.awt.BorderLayout;
-
 import java.awt.EventQueue;
+
+
 
 
 
@@ -21,12 +22,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import javax.swing.JInternalFrame;
-
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JTextField;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -343,36 +343,50 @@ public class menu_Principal extends JFrame implements ActionListener {
 		
 		jdlg.setVisible(true);
 		
-		
-		/*
-		JButton btnCerrar = new JButton("Cerrar");
-		JLabel lblAcerca = new JLabel("Tienda Dulces Chocolates"
-				+ " v1.0");
-		lblAcerca.setFont(new Font("Tahoma",Font.BOLD,20));
-		
-		
-		JDialog jd = new JDialog();
-		jd.setModal(true);
-		jd.setSize(500, 320);
-		jd.setLocationRelativeTo(this);
-		
-		
-		JPanel jdPanel = new JPanel();
-		jdPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		jd.setContentPane(jdPanel);
-		jd.getContentPane().setLayout(null);
-		
-		{
-			lblAcerca.setBounds(100,40,400,50);
-			jdPanel.add(lblAcerca);
+	
+	}
+	
+	// Region Obtener Tipos de Chocolate
+	
+	public static void getTipoTentacion(JTextField txtPeso, JTextField txtPrecio, JTextField txtUnidades){
 			
-			btnCerrar.setBounds(200,200,100,50);
-			jdPanel.add(btnCerrar);
-			
+			txtPeso.setText("" + menu_Principal.peso0);
+			txtPrecio.setText("" + menu_Principal.precio0);
+			txtUnidades.setText("" + menu_Principal.unidades0);
 			
 		}
 		
-		jd.setVisible(true);
-		*/
-	}
+	public static void getTipoDelicia(JTextField txtPeso, JTextField txtPrecio, JTextField txtUnidades){
+			
+			txtPeso.setText("" + menu_Principal.peso1);
+			txtPrecio.setText("" + menu_Principal.precio1);
+			txtUnidades.setText("" + menu_Principal.unidades1);
+			
+		}
+		
+	public static void getTipoExplosion(JTextField txtPeso, JTextField txtPrecio, JTextField txtUnidades) {
+			
+			txtPeso.setText("" + menu_Principal.peso2);
+			txtPrecio.setText("" + menu_Principal.precio2);
+			txtUnidades.setText("" + menu_Principal.unidades2);
+			
+		}
+		
+	public static void getTipoChokoLoko(JTextField txtPeso, JTextField txtPrecio, JTextField txtUnidades) {
+			
+			txtPeso.setText("" + menu_Principal.peso3);
+			txtPrecio.setText("" + menu_Principal.precio3);
+			txtUnidades.setText("" + menu_Principal.unidades3);
+			
+		}
+		
+	public static void getTipoChokoBoom(JTextField txtPeso, JTextField txtPrecio, JTextField txtUnidades) {
+			
+			txtPeso.setText("" + menu_Principal.peso4);
+			txtPrecio.setText("" + menu_Principal.precio4);
+			txtUnidades.setText("" + menu_Principal.unidades4);
+			
+		}
+		
+		// EndRegion
 }

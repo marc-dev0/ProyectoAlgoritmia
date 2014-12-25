@@ -104,7 +104,7 @@ public class ConsultaChocolate extends JInternalFrame implements ActionListener 
 			cboTipo.setBounds(183, 5, 118, 20);
 			getContentPane().add(cboTipo);
 			
-			getTipoTentacion();
+			menu_Principal.getTipoTentacion(txtPeso,txtPrecio,txtUnidades);
 		}
 		{
 			btnCerrar = new JButton("Cerrar");
@@ -143,64 +143,22 @@ public class ConsultaChocolate extends JInternalFrame implements ActionListener 
 		switch(cboTipo.getSelectedIndex()){
 		
 		case 0 : //Tentación
-			getTipoTentacion(); break;
+			menu_Principal.getTipoTentacion(txtPeso,txtPrecio,txtUnidades); break;
 			
 		case 1: //Delicia
-			getTipoDelicia(); break;
+			menu_Principal.getTipoDelicia(txtPeso,txtPrecio,txtUnidades); break;
 			
 		case 2: //Explosion
-			getTipoExplosion(); break;
+			menu_Principal.getTipoExplosion(txtPeso,txtPrecio,txtUnidades); break;
 		
 		case 3://ChokoLoko
-			getTipoChokoLoko(); break;
+			menu_Principal.getTipoChokoLoko(txtPeso,txtPrecio,txtUnidades); break;
 			
 		default://ChokoBoom
-			getTipoChokoBoom(); break;
+			menu_Principal.getTipoChokoBoom(txtPeso,txtPrecio,txtUnidades); break;
 		}
 	}
 	
 
-	// Region Obtener Tipos de Chocolate
 	
-	private void getTipoTentacion(){
-		
-		txtPeso.setText("" + menu_Principal.peso0);
-		txtPrecio.setText("" + menu_Principal.precio0);
-		txtUnidades.setText("" + menu_Principal.unidades0);
-		
-	}
-	
-	private void getTipoDelicia(){
-		
-		txtPeso.setText("" + menu_Principal.peso1);
-		txtPrecio.setText("" + menu_Principal.precio1);
-		txtUnidades.setText("" + menu_Principal.unidades1);
-		
-	}
-	
-	private void getTipoExplosion() {
-		
-		txtPeso.setText("" + menu_Principal.peso2);
-		txtPrecio.setText("" + menu_Principal.precio2);
-		txtUnidades.setText("" + menu_Principal.unidades2);
-		
-	}
-	
-	private void getTipoChokoLoko() {
-		
-		txtPeso.setText("" + menu_Principal.peso3);
-		txtPrecio.setText("" + menu_Principal.precio3);
-		txtUnidades.setText("" + menu_Principal.unidades3);
-		
-	}
-	
-	private void getTipoChokoBoom() {
-		
-		txtPeso.setText("" + menu_Principal.peso4);
-		txtPrecio.setText("" + menu_Principal.precio4);
-		txtUnidades.setText("" + menu_Principal.unidades4);
-		
-	}
-	
-	// EndRegion
 }
