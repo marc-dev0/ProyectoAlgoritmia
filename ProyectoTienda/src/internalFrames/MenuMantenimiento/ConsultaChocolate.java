@@ -104,7 +104,9 @@ public class ConsultaChocolate extends JInternalFrame implements ActionListener 
 			cboTipo.setBounds(183, 5, 118, 20);
 			getContentPane().add(cboTipo);
 			
-			menu_Principal.getTipoTentacion(txtPeso,txtPrecio,txtUnidades);
+			txtPeso.setText("" + menu_Principal.getPesoTentacion());
+			txtPrecio.setText("" + menu_Principal.getPrecioTentacion());
+			txtUnidades.setText(""+ menu_Principal.getUnidadesTentacion());
 		}
 		{
 			btnCerrar = new JButton("Cerrar");
@@ -143,19 +145,28 @@ public class ConsultaChocolate extends JInternalFrame implements ActionListener 
 		switch(cboTipo.getSelectedIndex()){
 		
 		case 0 : //Tentación
-			menu_Principal.getTipoTentacion(txtPeso,txtPrecio,txtUnidades); break;
-			
+			txtPeso.setText("" + menu_Principal.getPesoTentacion());
+			txtPrecio.setText("" + menu_Principal.getPrecioTentacion());
+			txtUnidades.setText(""+ menu_Principal.getUnidadesTentacion());break;
 		case 1: //Delicia
-			menu_Principal.getTipoDelicia(txtPeso,txtPrecio,txtUnidades); break;
+			txtPeso.setText("" + menu_Principal.getPesoDelicia());
+			txtPrecio.setText("" + menu_Principal.getPrecioDelicia());
+			txtUnidades.setText(""+ menu_Principal.getUnidadesDelicia());break;
 			
 		case 2: //Explosion
-			menu_Principal.getTipoExplosion(txtPeso,txtPrecio,txtUnidades); break;
+			txtPeso.setText("" + menu_Principal.getPesoExplosion());
+			txtPrecio.setText("" + menu_Principal.getPrecioExplosion());
+			txtUnidades.setText(""+ menu_Principal.getUnidadesExplosion());break;
 		
 		case 3://ChokoLoko
-			menu_Principal.getTipoChokoLoko(txtPeso,txtPrecio,txtUnidades); break;
+			txtPeso.setText("" + menu_Principal.getPesoChokoLoko());
+			txtPrecio.setText("" + menu_Principal.getPrecioChokoLoko());
+			txtUnidades.setText(""+ menu_Principal.getUnidadesChokoLoko());break;
 			
 		default://ChokoBoom
-			menu_Principal.getTipoChokoBoom(txtPeso,txtPrecio,txtUnidades); break;
+			txtPeso.setText("" + menu_Principal.getPesoChokoBoom());
+			txtPrecio.setText("" + menu_Principal.getPrecioChokoBoom());
+			txtUnidades.setText(""+ menu_Principal.getUnidadesChokoBoom());break;
 		}
 	}
 	

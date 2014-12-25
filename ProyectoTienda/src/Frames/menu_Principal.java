@@ -348,45 +348,105 @@ public class menu_Principal extends JFrame implements ActionListener {
 	
 	// Region Obtener Tipos de Chocolate
 	
-	public static void getTipoTentacion(JTextField txtPeso, JTextField txtPrecio, JTextField txtUnidades){
-			
-			txtPeso.setText("" + menu_Principal.peso0);
-			txtPrecio.setText("" + menu_Principal.precio0);
-			txtUnidades.setText("" + menu_Principal.unidades0);
-			
-		}
+	// Region Datos Tentación
+	
+	public static String getTipoTentacion(){
+		return menu_Principal.tipo0;
+	}
+	
+	public static int getUnidadesTentacion(){
+		return menu_Principal.unidades0;
+	}
+	
+	public static double getPesoTentacion(){
+		return menu_Principal.peso0;
+	}
+	
+	public static double getPrecioTentacion(){
+		return menu_Principal.precio0;
+	}
 		
-	public static void getTipoDelicia(JTextField txtPeso, JTextField txtPrecio, JTextField txtUnidades){
-			
-			txtPeso.setText("" + menu_Principal.peso1);
-			txtPrecio.setText("" + menu_Principal.precio1);
-			txtUnidades.setText("" + menu_Principal.unidades1);
-			
-		}
-		
-	public static void getTipoExplosion(JTextField txtPeso, JTextField txtPrecio, JTextField txtUnidades) {
-			
-			txtPeso.setText("" + menu_Principal.peso2);
-			txtPrecio.setText("" + menu_Principal.precio2);
-			txtUnidades.setText("" + menu_Principal.unidades2);
-			
-		}
-		
-	public static void getTipoChokoLoko(JTextField txtPeso, JTextField txtPrecio, JTextField txtUnidades) {
-			
-			txtPeso.setText("" + menu_Principal.peso3);
-			txtPrecio.setText("" + menu_Principal.precio3);
-			txtUnidades.setText("" + menu_Principal.unidades3);
-			
-		}
-		
-	public static void getTipoChokoBoom(JTextField txtPeso, JTextField txtPrecio, JTextField txtUnidades) {
-			
-			txtPeso.setText("" + menu_Principal.peso4);
-			txtPrecio.setText("" + menu_Principal.precio4);
-			txtUnidades.setText("" + menu_Principal.unidades4);
-			
-		}
-		
-		// EndRegion
+	// EndRegion
+	
+	// Region Datos Delicia
+	
+	public static String getTipoDelicia(){
+		return menu_Principal.tipo1;
+	}
+	
+	public static int getUnidadesDelicia(){
+		return menu_Principal.unidades1;
+	}
+	
+	public static double getPesoDelicia(){
+		return menu_Principal.peso1;
+	}
+	
+	public static double getPrecioDelicia(){
+		return menu_Principal.precio1;
+	}
+	
+	// EndRegion
+	
+	// Region Datos Explosión
+	
+	public static String getTipoExplosion(){
+		return menu_Principal.tipo2;
+	}
+	
+	public static int getUnidadesExplosion(){
+		return menu_Principal.unidades2;
+	}
+	
+	public static double getPesoExplosion(){
+		return menu_Principal.peso2;
+	}
+	
+	public static double getPrecioExplosion(){
+		return menu_Principal.precio2;
+	}
+	
+	// EndRegion
+	
+	// Region Datos ChokoLoko
+	
+	public static String getTipoChokoLoko(){
+		return menu_Principal.tipo3;
+	}
+	
+	public static int getUnidadesChokoLoko(){
+		return menu_Principal.unidades3;
+	}
+	
+	public static double getPesoChokoLoko(){
+		return menu_Principal.peso3;
+	}
+	
+	public static double getPrecioChokoLoko(){
+		return menu_Principal.precio3;
+	}
+	
+	// EndRegion
+
+	// Region Datos ChokoBoom
+	
+	public static String getTipoChokoBoom(){
+		return menu_Principal.tipo4;
+	}
+	
+	public static int getUnidadesChokoBoom(){
+		return menu_Principal.unidades4;
+	}
+	
+	public static double getPesoChokoBoom(){
+		return menu_Principal.peso4;
+	}
+	
+	public static double getPrecioChokoBoom(){
+		return menu_Principal.precio4;
+	}
+	
+	// EndRegion
+	
+	// EndRegion
 }

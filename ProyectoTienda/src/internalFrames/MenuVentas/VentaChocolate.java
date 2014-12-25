@@ -19,6 +19,8 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
 
+import Frames.menu_Principal;
+
 public class VentaChocolate extends JInternalFrame implements ActionListener {
 	/**
 	 * 
@@ -67,7 +69,8 @@ public class VentaChocolate extends JInternalFrame implements ActionListener {
 		}
 		{
 			cboTipoChoco = new JComboBox();
-			cboTipoChoco.setModel(new DefaultComboBoxModel(new String[] {"Tentaci\u00F3n", "Delicia", "Explosi\u00F3n", "ChokoLoko", "ChokoBoom"}));
+			cboTipoChoco.setModel(new DefaultComboBoxModel(new String[] {menu_Principal.tipo0,
+					menu_Principal.tipo1, menu_Principal.tipo2, menu_Principal.tipo3,menu_Principal.tipo4}));
 			cboTipoChoco.setToolTipText("");
 			cboTipoChoco.setFont(new Font("Arial", Font.PLAIN, 12));
 			cboTipoChoco.setBounds(124, 12, 122, 20);
@@ -87,6 +90,7 @@ public class VentaChocolate extends JInternalFrame implements ActionListener {
 		}
 		{
 			btnVender = new JButton("Vender");
+			btnVender.addActionListener(this);
 			btnVender.setFont(new Font("Arial", Font.PLAIN, 12));
 			btnVender.setBounds(343, 11, 89, 23);
 			getContentPane().add(btnVender);
@@ -118,6 +122,9 @@ public class VentaChocolate extends JInternalFrame implements ActionListener {
 		return instance;
 	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnVender) {
+			do_btnVender_actionPerformed(e);
+		}
 		if (e.getSource() == btnCerrar) {
 			do_btnCerrar_actionPerformed(e);
 		}
@@ -125,4 +132,94 @@ public class VentaChocolate extends JInternalFrame implements ActionListener {
 	protected void do_btnCerrar_actionPerformed(ActionEvent e) {
 		dispose();
 	}
+	protected void do_btnVender_actionPerformed(ActionEvent e) {
+		
+		mostrarReporte();
+	}
+	
+	private void mostrarReporte()
+	{
+		txtDetalle.setText("Tipo del Chocolate:"+ cboTipoChoco.getSelectedItem());
+		txtDetalle.append("\nUnidades por caja:"  + getUnidadPorCaja());
+		txtDetalle.append("\nPrecio por caja:" + getPrecioPorCaja());
+		txtDetalle.append("\nPeso por caja:" + getPesoporCaja());
+	}
+	// Region Getters
+	
+	String getUnidadPorCaja(){
+		
+		switch(cboTipoChoco.getSelectedIndex()){
+			
+		case 0 ://Tentación
+			return Integer.toString(menu_Principal.unidades0);
+			
+		case 1 ://Delicia
+			return Integer.toString(menu_Principal.unidades1);
+			
+		case 2 ://Explosión
+			return Integer.toString(menu_Principal.unidades2);
+			
+		case 3 ://ChokoLoko
+			return Integer.toString(menu_Principal.unidades3);
+			
+		default : //ChokoBoom
+			return Integer.toString(menu_Principal.unidades4);
+	
+		}	
+	}
+
+	String getPrecioPorCaja(){
+
+		switch(cboTipoChoco.getSelectedIndex()){
+		
+		case 0 ://Tentación
+			return Double.toString(menu_Principal.precio0);
+			
+		case 1 ://Delicia
+			return Double.toString(menu_Principal.precio1);
+			
+		case 2 ://Explosión
+			return Double.toString(menu_Principal.precio2);
+			
+		case 3 ://ChokoLoko
+			return Double.toString(menu_Principal.precio3);
+			
+		default : //ChokoBoom
+			return Double.toString(menu_Principal.precio4);
+			
+		}	
+	}
+	
+	String getPesoporCaja(){
+		
+		switch(cboTipoChoco.getSelectedIndex()){
+		
+		case 0 ://Tentación
+			return Double.toString(menu_Principal.peso0);
+			
+		case 1 ://Delicia
+			return Double.toString(menu_Principal.peso1);
+			
+		case 2 ://Explosión
+			return Double.toString(menu_Principal.peso2);
+			
+		case 3 ://ChokoLoko
+			return Double.toString(menu_Principal.peso3);
+			
+		default : //ChokoBoom
+			return Double.toString(menu_Principal.peso4);
+	
+		}	
+		
+	}
+
+	// EndRegion	
+	
+	// Region Calculos del proceso de Venta
+	
+		private void getImporteCompra(int cantidad){
+			
+		}
+		
+	//EndRegion
 }
