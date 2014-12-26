@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
@@ -27,7 +28,6 @@ public class VentaChocolate extends JInternalFrame implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel lblTipoChocolate;
-	
 	private JComboBox cboTipoChoco;
 	private JLabel lblCantidad;
 	private JTextField txtCantidad;
@@ -35,8 +35,10 @@ public class VentaChocolate extends JInternalFrame implements ActionListener {
 	private JButton btnCerrar;
 	private JScrollPane scrollPane;
 	private JTextArea txtDetalle;
-
 	private static VentaChocolate instance = null;
+	public static int canVentasTentacion = 0, canVentasDelicia = 0, canVentasExplosion = 0, canVentasChokoLoko = 0, canVentasChokoBoom = 0;
+	public static int totalCajasTentacion = 0, totalCajasDelicia = 0, totalCajasExplosion = 0, totalCajasChokoLoko = 0, totalCajasChokoBoom = 0;
+	public static double totalPagoTentacion = 0, totalPagoDelicia = 0, totalPagoExplosion = 0, totalPagoChokoLoko = 0, totalPagoChokoBoom = 0;
 	/**
 	 * Launch the application.
 	 */
@@ -129,97 +131,213 @@ public class VentaChocolate extends JInternalFrame implements ActionListener {
 			do_btnCerrar_actionPerformed(e);
 		}
 	}
+
 	protected void do_btnCerrar_actionPerformed(ActionEvent e) {
+
 		dispose();
+		
 	}
+	
 	protected void do_btnVender_actionPerformed(ActionEvent e) {
 		
-		mostrarReporte();
+		if(txtCantidad.getText().isEmpty()){
+			JOptionPane.showMessageDialog(null, "Debe ingresar la cantidad","Aviso", JOptionPane.INFORMATION_MESSAGE);
+			txtCantidad.requestFocus();
+			return;
+		}
+		
+		//declaración de variables
+		double importeCompra, descuento, importeTotal;
+		String obsequio;
+		//Variables entrada
+		int cantidad = Integer.parseInt(txtCantidad.getText());
+		
+		importeCompra = getImporteCompra(cantidad);
+		descuento = getDescuento(cantidad);
+		importeTotal = getImporteTotal(importeCompra,descuento);
+		obsequio = getObsequio(importeTotal);
+		mostrarReporte(cantidad, importeCompra, descuento,importeTotal, obsequio);
 	}
 	
-	private void mostrarReporte()
+	private void mostrarReporte(int cantidad, double importeCompra, double descuento, double importeTotal, String obsequio)
+	
 	{
-		txtDetalle.setText("Tipo del Chocolate:"+ cboTipoChoco.getSelectedItem());
-		txtDetalle.append("\nUnidades por caja:"  + getUnidadPorCaja());
-		txtDetalle.append("\nPrecio por caja:" + getPrecioPorCaja());
-		txtDetalle.append("\nPeso por caja:" + getPesoporCaja());
+		txtDetalle.setText("DETALLE DE VENTA \n\nTipo del Chocolate\t:\t"+ cboTipoChoco.getSelectedItem());
+		txtDetalle.append("\nUnidades por caja\t:\t"  + getUnidadPorCaja());
+		txtDetalle.append("\nPrecio por caja\t\t:\t" + menu_Principal.formatoDecimal(getPrecioPorCaja()));
+		txtDetalle.append("\nPeso por caja\t\t:\t" + getPesoporCaja());
+		txtDetalle.append("\nCantidad de Cajas Vendidas\t:\t" + cantidad);
+		txtDetalle.append("\nImporte de Compra\t:\t"+ menu_Principal.formatoDecimal(importeCompra));
+		txtDetalle.append("\nDescuento\t\t:\t"+ menu_Principal.formatoDecimal(descuento));
+		txtDetalle.append("\nImporte Total\t\t:\t" + menu_Principal.formatoDecimal(importeTotal));
+		txtDetalle.append("\nObsequio\t\t:\t" + obsequio);
+		
 	}
+	
 	// Region Getters
-	
-	String getUnidadPorCaja(){
+
+	private double getPrecioPorCaja() {
 		
 		switch(cboTipoChoco.getSelectedIndex()){
-			
+		
 		case 0 ://Tentación
-			return Integer.toString(menu_Principal.unidades0);
+			
+			return menu_Principal.getPrecioTentacion();
 			
 		case 1 ://Delicia
-			return Integer.toString(menu_Principal.unidades1);
+			
+			return menu_Principal.getPrecioDelicia();
 			
 		case 2 ://Explosión
-			return Integer.toString(menu_Principal.unidades2);
+			
+			return menu_Principal.getPrecioExplosion();
 			
 		case 3 ://ChokoLoko
-			return Integer.toString(menu_Principal.unidades3);
+			
+			return menu_Principal.getPrecioChokoLoko();
 			
 		default : //ChokoBoom
-			return Integer.toString(menu_Principal.unidades4);
+			
+			return menu_Principal.getPrecioChokoBoom();
+	
+		}
+	}
+
+	private int getUnidadPorCaja() {
+		
+		switch(cboTipoChoco.getSelectedIndex()){
+		
+		case 0 ://Tentación
+			
+			return menu_Principal.getUnidadesTentacion();
+			
+		case 1 ://Delicia
+			
+			return menu_Principal.getUnidadesDelicia();
+			
+		case 2 ://Explosión
+			
+			return menu_Principal.getUnidadesExplosion();
+			
+		case 3 ://ChokoLoko
+			
+			return menu_Principal.getUnidadesChokoLoko();
+			
+		default : //ChokoBoom
+			
+			return menu_Principal.getUnidadesChokoBoom();
 	
 		}	
 	}
 
-	String getPrecioPorCaja(){
-
-		switch(cboTipoChoco.getSelectedIndex()){
-		
-		case 0 ://Tentación
-			return Double.toString(menu_Principal.precio0);
-			
-		case 1 ://Delicia
-			return Double.toString(menu_Principal.precio1);
-			
-		case 2 ://Explosión
-			return Double.toString(menu_Principal.precio2);
-			
-		case 3 ://ChokoLoko
-			return Double.toString(menu_Principal.precio3);
-			
-		default : //ChokoBoom
-			return Double.toString(menu_Principal.precio4);
-			
-		}	
-	}
-	
-	String getPesoporCaja(){
+	private double getPesoporCaja(){
 		
 		switch(cboTipoChoco.getSelectedIndex()){
 		
 		case 0 ://Tentación
-			return Double.toString(menu_Principal.peso0);
+			
+			return menu_Principal.getPesoTentacion();
 			
 		case 1 ://Delicia
-			return Double.toString(menu_Principal.peso1);
+			
+			return menu_Principal.getPesoDelicia();
 			
 		case 2 ://Explosión
-			return Double.toString(menu_Principal.peso2);
+			
+			return menu_Principal.getPesoExplosion();
 			
 		case 3 ://ChokoLoko
-			return Double.toString(menu_Principal.peso3);
+			
+			return menu_Principal.getPesoChokoLoko();
 			
 		default : //ChokoBoom
-			return Double.toString(menu_Principal.peso4);
+			
+			return menu_Principal.getPesoChokoBoom();
 	
 		}	
-		
+	
 	}
 
 	// EndRegion	
 	
 	// Region Calculos del proceso de Venta
 	
-		private void getImporteCompra(int cantidad){
-			
-		}
+	private double getImporteCompra(int cantidad){
+
+		switch(cboTipoChoco.getSelectedIndex()){
 		
+		case 0 ://Tentación
+			canVentasTentacion++;
+			totalCajasTentacion += cantidad;
+			return cantidad * menu_Principal.getPrecioTentacion();
+			
+		case 1 ://Delicia
+			canVentasDelicia++;
+			totalCajasDelicia += cantidad;
+			return cantidad * menu_Principal.getPrecioDelicia();
+			
+		case 2 ://Explosión
+			canVentasExplosion++;
+			totalCajasExplosion += cantidad;
+			return cantidad * menu_Principal.getPrecioExplosion();
+			
+		case 3 ://ChokoLoko
+			canVentasChokoLoko++;
+			totalCajasChokoLoko += cantidad;
+			return cantidad * menu_Principal.getPrecioChokoLoko();
+			
+		default : //ChokoBoom
+			totalCajasChokoBoom += cantidad;
+			canVentasChokoBoom++;
+			return cantidad * menu_Principal.getPrecioChokoBoom();
+			
+		}	
+		
+	}
+	
+	private double getDescuento(int cantidad){
+		if (cantidad <= 5)
+			return cantidad * menu_Principal.porcDes1;
+		else if(cantidad <= 10)
+			return cantidad * menu_Principal.porcDes2;
+		else if(cantidad <= 15)
+			return cantidad * menu_Principal.porcDes3;
+		else 
+			return cantidad * menu_Principal.porcDes4;
+	}
+		
+	private double getImporteTotal(double importeCompra, double descuento){
+	
+		double impPago = importeCompra - descuento ;
+		
+		switch(cboTipoChoco.getSelectedIndex()){
+		case 0 : //Tentacion
+			totalPagoTentacion += impPago;
+			return impPago;
+		case 1 : //Delicia
+			totalPagoDelicia += impPago;
+			return impPago;
+		case 2 : //Explosion
+			totalPagoExplosion += impPago;
+			return impPago;
+		case 3 : //ChokoLoko
+			totalPagoChokoLoko += impPago;
+			return impPago;
+		default : //ChokoBoom
+			totalPagoChokoBoom += impPago;
+			return impPago;
+		}
+	}
+	
+	private String getObsequio(double importeTotal){
+		
+		String obs;
+		if(importeTotal>= menu_Principal.IPAGMRO)
+			obs = menu_Principal.obsequio;
+		else
+			obs = " No tiene el Importe de Pago suficiente para obtener un regalo";
+		return obs;
+	
+	}
 	//EndRegion
 }

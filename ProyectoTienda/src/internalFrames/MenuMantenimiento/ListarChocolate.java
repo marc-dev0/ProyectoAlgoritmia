@@ -94,24 +94,16 @@ public class ListarChocolate extends JInternalFrame implements ActionListener {
 		
 	}
 	
-	// Region Método para dar formato con 2 decimales a un valor
 
-	private String formatoDecimal(double Value){
-		
-		return String.format("%.2f", Value);
-		
-	}
-	
-	// EndRegion
 	
 	// Region Método que recibe el tipo, las unidades, precio y peso de los productos de la Tienda y los agrega al JTextArea
 			
 	private void imprimir(String tipo, double unidades, double precio, double peso){
 		
 		txtListado.append("\nTipo\t\t:\t" + tipo);
-		txtListado.append("\nUnidades por caja\t:\t" + formatoDecimal(unidades));
-		txtListado.append("\nPrecio por caja\t\t:\t" + "S/." + formatoDecimal(precio));
-		txtListado.append("\nPeso por caja\t\t:\t" + formatoDecimal(peso));
+		txtListado.append("\nUnidades por caja\t:\t" + menu_Principal.formatoDecimal(unidades));
+		txtListado.append("\nPrecio por caja\t\t:\t" + "S/." + menu_Principal.formatoDecimal(precio));
+		txtListado.append("\nPeso por caja\t\t:\t" + menu_Principal.formatoDecimal(peso));
 		txtListado.append("\n");
 	}
 	

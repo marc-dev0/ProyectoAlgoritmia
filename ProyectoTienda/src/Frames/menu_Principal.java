@@ -19,6 +19,7 @@ import java.awt.EventQueue;
 
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -105,7 +106,7 @@ public class menu_Principal extends JFrame implements ActionListener {
 		public static double IPAGMRO = 350;
 	// EndRegion
 	// Region Obsequio
-		public static String obsequio = "Un lapicero";
+		public static String obsequio = " Un lapicero";
 	// EndRegion
 	//EndRegion
 	
@@ -449,4 +450,17 @@ public class menu_Principal extends JFrame implements ActionListener {
 	// EndRegion
 	
 	// EndRegion
+
+	// EndRegion
+	
+	// Region Método para dar formato con 2 decimales a un valor
+
+	public static String formatoDecimal(double Value){
+		
+		return String.format("%.2f", Value);
+		
+	}
+	
+	// EndRegion
+	
 }
