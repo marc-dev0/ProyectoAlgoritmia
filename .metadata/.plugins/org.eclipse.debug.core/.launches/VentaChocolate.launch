@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/Proyecto I - Tienda Chocolates/src/internalFrames/MenuVentas/VentaChocolate.java"/>
+<listEntry value="/ProyectoTienda/src/internalFrames/MenuVentas/VentaChocolate.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="internalFrames.MenuVentas.VentaChocolate"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Proyecto I - Tienda Chocolates"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ProyectoTienda"/>
 </launchConfiguration>

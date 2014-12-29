@@ -153,7 +153,7 @@ public class VentaChocolate extends JInternalFrame implements ActionListener {
 		int cantidad = Integer.parseInt(txtCantidad.getText());
 		
 		importeCompra = getImporteCompra(cantidad);
-		descuento = getDescuento(cantidad);
+		descuento = getDescuento(cantidad, importeCompra);
 		importeTotal = getImporteTotal(importeCompra,descuento);
 		obsequio = getObsequio(importeTotal);
 		mostrarReporte(cantidad, importeCompra, descuento,importeTotal, obsequio);
@@ -295,15 +295,15 @@ public class VentaChocolate extends JInternalFrame implements ActionListener {
 		
 	}
 	
-	private double getDescuento(int cantidad){
+	private double getDescuento(int cantidad, double importeCompra){
 		if (cantidad <= 5)
-			return cantidad * menu_Principal.porcDes1;
+			return (importeCompra * menu_Principal.porcDes1)/100;
 		else if(cantidad <= 10)
-			return cantidad * menu_Principal.porcDes2;
+			return (importeCompra * menu_Principal.porcDes2)/100;
 		else if(cantidad <= 15)
-			return cantidad * menu_Principal.porcDes3;
+			return (importeCompra * menu_Principal.porcDes3)/100;
 		else 
-			return cantidad * menu_Principal.porcDes4;
+			return (importeCompra * menu_Principal.porcDes4)/100;
 	}
 		
 	private double getImporteTotal(double importeCompra, double descuento){

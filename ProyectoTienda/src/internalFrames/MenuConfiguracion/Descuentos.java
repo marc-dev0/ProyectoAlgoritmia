@@ -1,16 +1,24 @@
 package internalFrames.MenuConfiguracion;
 
 import java.awt.EventQueue;
+import java.awt.TrayIcon.MessageType;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
 
-public class Descuentos extends JInternalFrame implements ActionListener {
+import Frames.menu_Principal;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+
+public class Descuentos extends JInternalFrame implements ActionListener, KeyListener {
 	/**
 	 * 
 	 */
@@ -85,24 +93,28 @@ public class Descuentos extends JInternalFrame implements ActionListener {
 		}
 		{
 			txtRango1a5 = new JTextField();
+			txtRango1a5.addKeyListener(this);
 			txtRango1a5.setBounds(200, 8, 86, 20);
 			getContentPane().add(txtRango1a5);
 			txtRango1a5.setColumns(10);
 		}
 		{
 			txtRango6a10 = new JTextField();
+			txtRango6a10.addKeyListener(this);
 			txtRango6a10.setColumns(10);
 			txtRango6a10.setBounds(200, 33, 86, 20);
 			getContentPane().add(txtRango6a10);
 		}
 		{
 			txtRango11a15 = new JTextField();
+			txtRango11a15.addKeyListener(this);
 			txtRango11a15.setColumns(10);
 			txtRango11a15.setBounds(200, 58, 86, 20);
 			getContentPane().add(txtRango11a15);
 		}
 		{
 			txtRangoMayora15 = new JTextField();
+			txtRangoMayora15.addKeyListener(this);
 			txtRangoMayora15.setColumns(10);
 			txtRangoMayora15.setBounds(200, 83, 86, 20);
 			getContentPane().add(txtRangoMayora15);
@@ -129,6 +141,7 @@ public class Descuentos extends JInternalFrame implements ActionListener {
 		}
 		{
 			btnAceptar = new JButton("Aceptar");
+			btnAceptar.addActionListener(this);
 			btnAceptar.setBounds(330, 7, 89, 23);
 			getContentPane().add(btnAceptar);
 		}
@@ -138,6 +151,13 @@ public class Descuentos extends JInternalFrame implements ActionListener {
 			btnCancelar.setBounds(330, 39, 89, 23);
 			getContentPane().add(btnCancelar);
 		}
+		
+		{ //Load descuentos a JTextField
+			txtRango1a5.setText(""+menu_Principal.getDescuento1a5());
+			txtRango6a10.setText(""+menu_Principal.getDescuento6a10());
+			txtRango11a15.setText(""+menu_Principal.getDescuento11a15());
+			txtRangoMayora15.setText(""+menu_Principal.getDescuento15aMas());
+		}
 
 	}
 
@@ -145,8 +165,84 @@ public class Descuentos extends JInternalFrame implements ActionListener {
 		if (e.getSource() == btnCancelar) {
 			do_btnCancelar_actionPerformed(e);
 		}
+		
+		if (e.getSource() == btnAceptar) {
+			do_btnAceptar_actionPerformed(e);
+		}
 	}
+	private void do_btnAceptar_actionPerformed(ActionEvent e) {
+		
+		
+		menu_Principal.porcDes1 = Double.parseDouble(txtRango1a5.getText());
+		menu_Principal.porcDes2 = Double.parseDouble(txtRango6a10.getText());
+		menu_Principal.porcDes3 = Double.parseDouble(txtRango11a15.getText());
+		menu_Principal.porcDes4 = Double.parseDouble(txtRangoMayora15.getText());
+		JOptionPane.showMessageDialog(null, "Los cambios han sido registrados","Aviso", JOptionPane.INFORMATION_MESSAGE);
+		
+	}
+	
+
 	protected void do_btnCancelar_actionPerformed(ActionEvent e) {
 		dispose();
 	}
+
+	public void keyTyped(KeyEvent arg0) {
+		
+		
+		if (arg0.getSource() == txtRango1a5) {
+			do_txtRango1a5_keyTyped(arg0);
+		}
+		
+		if (arg0.getSource() == txtRango6a10) {
+			do_txtRango6a10_keyTyped(arg0);
+		}
+		
+		if (arg0.getSource() == txtRango11a15) {
+			do_txtRango11a15_keyTyped(arg0);
+		}
+		
+		if (arg0.getSource() == txtRangoMayora15) {
+			do_txtRangoMayora15_keyTyped(arg0);
+		}
+	
+	}
+
+	private void do_txtRango11a15_keyTyped(KeyEvent arg0)  {
+		menu_Principal mnu = new menu_Principal();
+		mnu.validarCampoNumerico(arg0);
+		
+	}
+
+	private void do_txtRango6a10_keyTyped(KeyEvent arg0) {
+		menu_Principal mnu = new menu_Principal();
+		mnu.validarCampoNumerico(arg0);
+		
+	}
+
+	private void do_txtRango1a5_keyTyped(KeyEvent arg0) {
+		menu_Principal mnu = new menu_Principal();
+		mnu.validarCampoNumerico(arg0);
+		
+	}
+
+	private void do_txtRangoMayora15_keyTyped(KeyEvent arg0) {
+		menu_Principal mnu = new menu_Principal();
+		mnu.validarCampoNumerico(arg0);
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
+	
+

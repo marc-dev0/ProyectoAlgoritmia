@@ -1,5 +1,9 @@
+collapse.constructors=true
 collapse.line.comments=true
+collapse.main_methods=true
+collapse.methods=true
 eclipse.preferences.version=1
+fold.getterSetter=true
 fold.userDefined=true
 last.line.comments=true
 user.defined.end=EndRegion

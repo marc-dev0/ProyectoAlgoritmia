@@ -4,13 +4,20 @@ import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
 
-public class Precio extends JInternalFrame implements ActionListener {
+import Frames.menu_Principal;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+
+public class Precio extends JInternalFrame implements ActionListener, KeyListener {
 	/**
 	 * 
 	 */
@@ -118,36 +125,42 @@ public class Precio extends JInternalFrame implements ActionListener {
 		}
 		{
 			txtTentacion = new JTextField();
+			txtTentacion.addKeyListener(this);
 			txtTentacion.setBounds(156, 8, 64, 20);
 			getContentPane().add(txtTentacion);
 			txtTentacion.setColumns(10);
 		}
 		{
 			txtDelicia = new JTextField();
+			txtDelicia.addKeyListener(this);
 			txtDelicia.setColumns(10);
 			txtDelicia.setBounds(156, 33, 64, 20);
 			getContentPane().add(txtDelicia);
 		}
 		{
 			txtExplosion = new JTextField();
+			txtExplosion.addKeyListener(this);
 			txtExplosion.setColumns(10);
 			txtExplosion.setBounds(156, 58, 64, 20);
 			getContentPane().add(txtExplosion);
 		}
 		{
 			txtChokoloko = new JTextField();
+			txtChokoloko.addKeyListener(this);
 			txtChokoloko.setColumns(10);
 			txtChokoloko.setBounds(156, 83, 64, 20);
 			getContentPane().add(txtChokoloko);
 		}
 		{
 			txtChocoBoom = new JTextField();
+			txtChocoBoom.addKeyListener(this);
 			txtChocoBoom.setColumns(10);
 			txtChocoBoom.setBounds(156, 108, 64, 20);
 			getContentPane().add(txtChocoBoom);
 		}
 		{
 			btnAceptar = new JButton("Aceptar");
+			btnAceptar.addActionListener(this);
 			btnAceptar.setBounds(246, 7, 89, 23);
 			getContentPane().add(btnAceptar);
 		}
@@ -157,15 +170,79 @@ public class Precio extends JInternalFrame implements ActionListener {
 			btnCancelar.setBounds(246, 52, 89, 23);
 			getContentPane().add(btnCancelar);
 		}
-
+		{
+			//cargar precios a los jtextfield
+			txtTentacion.setText(""+menu_Principal.getPrecioTentacion());
+			txtDelicia.setText(""+menu_Principal.getPrecioDelicia());
+			txtExplosion.setText(""+menu_Principal.getPrecioExplosion());
+			txtChokoloko.setText(""+menu_Principal.getPrecioChokoLoko());
+			txtChocoBoom.setText(""+menu_Principal.getPrecioChokoBoom());
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
+	
+		if (e.getSource() == btnAceptar) {
+			do_btnAceptar_actionPerformed(e);
+		}
 		if (e.getSource() == btnCancelar) {
 			do_btnCancelar_actionPerformed(e);
 		}
+		
 	}
 	protected void do_btnCancelar_actionPerformed(ActionEvent e) {
 		dispose();
+	}
+
+	protected void do_btnAceptar_actionPerformed(ActionEvent e) {
+		
+		menu_Principal.precio0 = Double.parseDouble(txtTentacion.getText());
+		menu_Principal.precio1 = Double.parseDouble(txtDelicia.getText());
+		menu_Principal.precio2 = Double.parseDouble(txtExplosion.getText());
+		menu_Principal.precio3 = Double.parseDouble(txtChokoloko.getText());
+		menu_Principal.precio4 = Double.parseDouble(txtChocoBoom.getText());
+		JOptionPane.showMessageDialog(null, "Los cambios han sido registrado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	public void keyPressed(KeyEvent arg0) {
+	}
+	public void keyReleased(KeyEvent arg0) {
+	}
+	public void keyTyped(KeyEvent arg0) {
+		if (arg0.getSource() == txtChocoBoom) {
+			do_txtChocoBoom_keyTyped(arg0);
+		}
+		if (arg0.getSource() == txtChokoloko) {
+			do_txtChokoloko_keyTyped(arg0);
+		}
+		if (arg0.getSource() == txtExplosion) {
+			do_txtExplosion_keyTyped(arg0);
+		}
+		if (arg0.getSource() == txtDelicia) {
+			do_txtDelicia_keyTyped(arg0);
+		}
+		if (arg0.getSource() == txtTentacion) {
+			do_txtTentacion_keyTyped(arg0);
+		}
+	}
+	protected void do_txtTentacion_keyTyped(KeyEvent arg0) {
+		menu_Principal mnu = new menu_Principal();
+		mnu.validarCampoNumerico(arg0);
+	}
+	protected void do_txtDelicia_keyTyped(KeyEvent arg0) {
+		menu_Principal mnu = new menu_Principal();
+		mnu.validarCampoNumerico(arg0);
+	}
+	protected void do_txtExplosion_keyTyped(KeyEvent arg0) {
+		menu_Principal mnu = new menu_Principal();
+		mnu.validarCampoNumerico(arg0);
+	}
+	protected void do_txtChokoloko_keyTyped(KeyEvent arg0) {
+		menu_Principal mnu = new menu_Principal();
+		mnu.validarCampoNumerico(arg0);
+	}
+	protected void do_txtChocoBoom_keyTyped(KeyEvent arg0) {
+		menu_Principal mnu = new menu_Principal();
+		mnu.validarCampoNumerico(arg0);
 	}
 }

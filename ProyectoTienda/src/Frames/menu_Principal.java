@@ -20,6 +20,7 @@ import java.awt.EventQueue;
 
 
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -31,6 +32,7 @@ import javax.swing.JTextField;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JDesktopPane;
 import javax.swing.ImageIcon;
@@ -105,9 +107,8 @@ public class menu_Principal extends JFrame implements ActionListener {
 		public static double IPAGMRO = 350;
 	// EndRegion
 	// Region Obsequio
-		public static String obsequio = " Un lapicero";
+		public static String obsequio = "Un lapicero";
 	// EndRegion
-	
 	//EndRegion
 	
 	/**
@@ -350,112 +351,132 @@ public class menu_Principal extends JFrame implements ActionListener {
 	
 	}
 	
-	// Region Obtener Tipos de Chocolate
+	// Region Getters
 	
-	// Region Datos Tentación
-	
-	public static String getTipoTentacion(){
-		return menu_Principal.tipo0;
-	}
-	
-	public static int getUnidadesTentacion(){
-		return menu_Principal.unidades0;
-	}
-	
-	public static double getPesoTentacion(){
-		return menu_Principal.peso0;
-	}
-	
-	public static double getPrecioTentacion(){
-		return menu_Principal.precio0;
-	}
+		// Region Obtener Tipos de Chocolate
 		
-	// EndRegion
+			// Region Datos Tentación
+			
+			public static String getTipoTentacion(){
+				return menu_Principal.tipo0;
+			}
+			
+			public static int getUnidadesTentacion(){
+				return menu_Principal.unidades0;
+			}
+			
+			public static double getPesoTentacion(){
+				return menu_Principal.peso0;
+			}
+			
+			public static double getPrecioTentacion(){
+				return menu_Principal.precio0;
+			}
+				
+			// EndRegion
+		
+			// Region Datos Delicia
+		
+			public static String getTipoDelicia(){
+				return menu_Principal.tipo1;
+			}
+			
+			public static int getUnidadesDelicia(){
+				return menu_Principal.unidades1;
+			}
+			
+			public static double getPesoDelicia(){
+				return menu_Principal.peso1;
+			}
+			
+			public static double getPrecioDelicia(){
+				return menu_Principal.precio1;
+			}
+			
+			// EndRegion
+		
+			// Region Datos Explosión
+		
+			public static String getTipoExplosion(){
+				return menu_Principal.tipo2;
+			}
+			
+			public static int getUnidadesExplosion(){
+				return menu_Principal.unidades2;
+			}
+			
+			public static double getPesoExplosion(){
+				return menu_Principal.peso2;
+			}
+			
+			public static double getPrecioExplosion(){
+				return menu_Principal.precio2;
+			}
+			
+			// EndRegion
+		
+			// Region Datos ChokoLoko
+		
+			public static String getTipoChokoLoko(){
+				return menu_Principal.tipo3;
+			}
+			
+			public static int getUnidadesChokoLoko(){
+				return menu_Principal.unidades3;
+			}
+			
+			public static double getPesoChokoLoko(){
+				return menu_Principal.peso3;
+			}
+			
+			public static double getPrecioChokoLoko(){
+				return menu_Principal.precio3;
+			}
+			
+			// EndRegion
 	
-	// Region Datos Delicia
+			// Region Datos ChokoBoom
+		
+			public static String getTipoChokoBoom(){
+				return menu_Principal.tipo4;
+			}
+			
+			public static int getUnidadesChokoBoom(){
+				return menu_Principal.unidades4;
+			}
+			
+			public static double getPesoChokoBoom(){
+				return menu_Principal.peso4;
+			}
+			
+			public static double getPrecioChokoBoom(){
+				return menu_Principal.precio4;
+			}
+		
+			// EndRegion
 	
-	public static String getTipoDelicia(){
-		return menu_Principal.tipo1;
-	}
+		// EndRegion
 	
-	public static int getUnidadesDelicia(){
-		return menu_Principal.unidades1;
-	}
-	
-	public static double getPesoDelicia(){
-		return menu_Principal.peso1;
-	}
-	
-	public static double getPrecioDelicia(){
-		return menu_Principal.precio1;
-	}
-	
-	// EndRegion
-	
-	// Region Datos Explosión
-	
-	public static String getTipoExplosion(){
-		return menu_Principal.tipo2;
-	}
-	
-	public static int getUnidadesExplosion(){
-		return menu_Principal.unidades2;
-	}
-	
-	public static double getPesoExplosion(){
-		return menu_Principal.peso2;
-	}
-	
-	public static double getPrecioExplosion(){
-		return menu_Principal.precio2;
-	}
-	
-	// EndRegion
-	
-	// Region Datos ChokoLoko
-	
-	public static String getTipoChokoLoko(){
-		return menu_Principal.tipo3;
-	}
-	
-	public static int getUnidadesChokoLoko(){
-		return menu_Principal.unidades3;
-	}
-	
-	public static double getPesoChokoLoko(){
-		return menu_Principal.peso3;
-	}
-	
-	public static double getPrecioChokoLoko(){
-		return menu_Principal.precio3;
-	}
-	
-	// EndRegion
+		// Region Porcentajes de descuento
 
-	// Region Datos ChokoBoom
-	
-	public static String getTipoChokoBoom(){
-		return menu_Principal.tipo4;
-	}
-	
-	public static int getUnidadesChokoBoom(){
-		return menu_Principal.unidades4;
-	}
-	
-	public static double getPesoChokoBoom(){
-		return menu_Principal.peso4;
-	}
-	
-	public static double getPrecioChokoBoom(){
-		return menu_Principal.precio4;
-	}
-	
-	// EndRegion
-	
-	// EndRegion
-
-	// EndRegion
-	
+			public static double getDescuento1a5(){
+				return porcDes1;
+			}
+			
+			public static double getDescuento6a10(){
+				return porcDes2;
+			}
+			
+			public static double getDescuento11a15(){
+				return porcDes3;
+			}
+			
+			public static double getDescuento15aMas(){
+				return porcDes4;
+			}
+			
+		// EndRegion
+		
 	// Region Método para dar formato con 2 decimales a un valor
 
 	public static String formatoDecimal(double Value){
@@ -525,4 +546,20 @@ public class menu_Principal extends JFrame implements ActionListener {
 	}
 	
 	// EndRegion
+	
+	// Region Validar que sólo se acepten ciertos caracteres definidos en el método sin retorno
+
+	public void validarCampoNumerico(KeyEvent arg0){
+		
+		String c1 = String.valueOf(arg0.getKeyChar());
+		if(!(c1.matches("[0-9.,]"))){
+			arg0.consume();
+			getToolkit().beep();
+		}
+	}	
+	
+	// EndRegion
+
+	
+	
 }

@@ -4,13 +4,20 @@ import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
 
-public class CantidadOptima extends JInternalFrame implements ActionListener {
+import Frames.menu_Principal;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
+
+public class CantidadOptima extends JInternalFrame implements ActionListener, KeyListener {
 	/**
 	 * 
 	 */
@@ -46,7 +53,7 @@ public class CantidadOptima extends JInternalFrame implements ActionListener {
 		setFrameIcon(new ImageIcon(CantidadOptima.class.getResource("/imagenes/stack18.png")));
 		
 		setTitle("Configuraci\u00F3n de la cantidad \u00F3ptima de ventas");
-		setBounds(100, 100, 326, 134);
+		setBounds(100, 100, 326, 117);
 		
 		getContentPane().setLayout(null);
 		{
@@ -56,12 +63,14 @@ public class CantidadOptima extends JInternalFrame implements ActionListener {
 		}
 		{
 			txtCantidad = new JTextField();
+			txtCantidad.addKeyListener(this);
 			txtCantidad.setBounds(201, 8, 86, 20);
 			getContentPane().add(txtCantidad);
 			txtCantidad.setColumns(10);
 		}
 		{
 			btnAceptar = new JButton("Aceptar");
+			btnAceptar.addActionListener(this);
 			btnAceptar.setBounds(10, 45, 89, 23);
 			getContentPane().add(btnAceptar);
 		}
@@ -70,6 +79,10 @@ public class CantidadOptima extends JInternalFrame implements ActionListener {
 			btnCancelar.addActionListener(this);
 			btnCancelar.setBounds(198, 45, 89, 23);
 			getContentPane().add(btnCancelar);
+		}
+		{
+			//cargar cantidad
+			txtCantidad.setText(""+ menu_Principal.COV);
 		}
 
 	}
@@ -83,11 +96,45 @@ public class CantidadOptima extends JInternalFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnAceptar) {
+			do_btnAceptar_actionPerformed(e);
+		}
 		if (e.getSource() == btnCancelar) {
 			do_btnCancelar_actionPerformed(e);
 		}
 	}
+	
 	protected void do_btnCancelar_actionPerformed(ActionEvent e) {
 		dispose();
 	}
+	
+	protected void do_btnAceptar_actionPerformed(ActionEvent e) {
+		
+		menu_Principal.COV = Integer.parseInt(txtCantidad.getText());
+		JOptionPane.showMessageDialog(null, "Los cambios han sido registrado correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+	
+	}
+	
+	public void keyPressed(KeyEvent e) {
+	}
+	
+	public void keyReleased(KeyEvent e) {
+	}
+	
+	public void keyTyped(KeyEvent e) {
+		if (e.getSource() == txtCantidad) {
+			do_txtCantidad_keyTyped(e);
+		}
+	}
+	
+	protected void do_txtCantidad_keyTyped(KeyEvent e) {
+		String c = String.valueOf(e.getKeyChar());
+			
+		if(!(c.matches("[0-9]"))){
+			e.consume();
+			getToolkit().beep();
+		}
+		
+	}
+	
 }

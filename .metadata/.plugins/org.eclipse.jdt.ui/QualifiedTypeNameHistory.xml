@@ -5,7 +5,6 @@
 <fullyQualifiedTypeName name="internalFrames.MenuMantenimiento.ConsultaChocolate"/>
 <fullyQualifiedTypeName name="internalFrames.MenuMantenimiento.ListarChocolate"/>
 <fullyQualifiedTypeName name="internalFrames.MenuVentas.GeneracionReporte"/>
-<fullyQualifiedTypeName name="internalFrames.MenuVentas.VentaChocolate"/>
 <fullyQualifiedTypeName name="internalFrames.MenuConfiguracion.Descuentos"/>
 <fullyQualifiedTypeName name="internalFrames.MenuConfiguracion.Precio"/>
 <fullyQualifiedTypeName name="internalFrames.MenuConfiguracion.Obsequio"/>
@@ -20,6 +19,12 @@
 <fullyQualifiedTypeName name="javax.swing.JButton"/>
 <fullyQualifiedTypeName name="internalFrames.MenuAyuda.Acercade"/>
 <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+<fullyQualifiedTypeName name="javax.swing.JTextField"/>
+<fullyQualifiedTypeName name="javax.swing.JComboBox"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="org.omg.CORBA.Object"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="internalFrames.MenuVentas.VentaChocolate"/>
 <fullyQualifiedTypeName name="Frames.menu_Principal"/>
 </qualifiedTypeNameHistroy>

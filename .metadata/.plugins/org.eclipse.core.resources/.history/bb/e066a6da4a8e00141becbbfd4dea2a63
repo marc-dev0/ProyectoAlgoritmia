@@ -1,0 +1,177 @@
+package internalFrames.MenuVentas;
+
+import java.awt.EventQueue;
+
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+
+import java.awt.Font;
+
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JScrollPane;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import javax.swing.ImageIcon;
+
+import org.omg.CORBA.Object;
+
+import Frames.menu_Principal;
+
+public class GeneracionReporte extends JInternalFrame implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JLabel lblTipoReporte;
+	private JComboBox cboTipoReporte;
+	private JButton btnCerrar;
+	private JScrollPane scrollPane;
+	private JTextArea txtReporte;
+
+	private static GeneracionReporte instance = null;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					GeneracionReporte frame = new GeneracionReporte();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	private GeneracionReporte() {
+		setFrameIcon(new ImageIcon(GeneracionReporte.class.getResource("/imagenes/increasing5.png")));
+		setTitle("Reportes");
+		setBounds(100, 100, 573, 318);
+		getContentPane().setLayout(null);
+		{
+			lblTipoReporte = new JLabel("Tipo de Reporte");
+			lblTipoReporte.setFont(new Font("Arial", Font.PLAIN, 12));
+			lblTipoReporte.setBounds(10, 15, 112, 14);
+			getContentPane().add(lblTipoReporte);
+		}
+		{
+			cboTipoReporte = new JComboBox();
+			cboTipoReporte.addActionListener(this);
+			cboTipoReporte.setModel(new DefaultComboBoxModel(new String[] {"Ventas por chocolate", "Chocolates con venta \u00F3ptima", "Chocolates con precios inferiores al precio promedio", "Chocolates con precios superiores al precio promedio", "Precios promedio, menor y mayor"}));
+			cboTipoReporte.setFont(new Font("Arial", Font.PLAIN, 12));
+			cboTipoReporte.setBounds(112, 12, 333, 20);
+			getContentPane().add(cboTipoReporte);
+		}
+		{
+			btnCerrar = new JButton("Cerrar");
+			btnCerrar.addActionListener(this);
+			btnCerrar.setFont(new Font("Arial", Font.PLAIN, 12));
+			btnCerrar.setBounds(457, 11, 89, 23);
+			getContentPane().add(btnCerrar);
+		}
+		{
+			scrollPane = new JScrollPane();
+			scrollPane.setBounds(10, 54, 525, 223);
+			getContentPane().add(scrollPane);
+			{
+				txtReporte = new JTextArea();
+				scrollPane.setViewportView(txtReporte);
+			}
+		}
+
+	}
+	
+	public static GeneracionReporte getInstance(){
+		if(instance == null){
+			instance = new GeneracionReporte();
+		
+		}
+		return instance;
+	}
+	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == cboTipoReporte) {
+			do_cboTipoReporte_actionPerformed(arg0);
+		}
+		if (arg0.getSource() == btnCerrar) {
+			do_btnCerrar_actionPerformed(arg0);
+		}
+	}
+	
+	protected void do_btnCerrar_actionPerformed(ActionEvent arg0) {
+
+		dispose();
+	}
+	
+	protected void do_cboTipoReporte_actionPerformed(ActionEvent arg0) {
+	
+		double importeTotal = VentaChocolate.totalPagoChokoBoom + VentaChocolate.totalPagoChokoLoko + VentaChocolate.totalPagoDelicia + 
+				  VentaChocolate.totalPagoExplosion + VentaChocolate.totalPagoTentacion;
+		
+		
+		switch(cboTipoReporte.getSelectedIndex()){
+		
+		case 0 : //Ventas por Chocolate
+			txtReporte.setText("");
+			imprimirVentasPorChocolate(menu_Principal.getTipoTentacion(), VentaChocolate.canVentasTentacion, VentaChocolate.totalCajasTentacion, VentaChocolate.totalPagoTentacion);
+			imprimirVentasPorChocolate(menu_Principal.getTipoDelicia(), VentaChocolate.canVentasDelicia, VentaChocolate.totalCajasDelicia, VentaChocolate.totalPagoDelicia);
+			imprimirVentasPorChocolate(menu_Principal.getTipoExplosion(), VentaChocolate.canVentasExplosion, VentaChocolate.totalCajasExplosion, VentaChocolate.totalPagoExplosion);
+			imprimirVentasPorChocolate(menu_Principal.getTipoChokoLoko(), VentaChocolate.canVentasChokoLoko,VentaChocolate.totalCajasChokoLoko, VentaChocolate.totalPagoChokoLoko);
+			imprimirVentasPorChocolate(menu_Principal.getTipoChokoBoom(), VentaChocolate.canVentasChokoBoom, VentaChocolate.totalCajasChokoBoom, VentaChocolate.totalPagoChokoBoom);
+			txtReporte.append("Importe total Acumulado General: \t"+ menu_Principal.formatoDecimal(importeTotal));break;
+		
+		case 1 : //Chocolates con Venta Óptima
+			txtReporte.setText("");
+			imprimirVentaOptima(menu_Principal.getTipoTentacion(), VentaChocolate.totalCajasTentacion);
+			imprimirVentaOptima(menu_Principal.getTipoTentacion(), VentaChocolate.totalCajasDelicia);
+			imprimirVentaOptima(menu_Principal.getTipoTentacion(), VentaChocolate.totalCajasExplosion);
+			imprimirVentaOptima(menu_Principal.getTipoTentacion(), VentaChocolate.totalCajasChokoLoko);
+			imprimirVentaOptima(menu_Principal.getTipoTentacion(), VentaChocolate.totalCajasChokoBoom);break;
+			
+		case 2 : //Explosion
+			
+		
+		case 3 : //ChokoLoko
+			
+		
+		default : //ChokoBoom
+			
+			
+		}
+		
+	}
+	
+// Region Métodos para Imprimir Reportes 
+	
+	private void imprimirVentasPorChocolate(String tipo, int cantidadVentas, int cantidadCajas, double importeTotal){
+		txtReporte.append("VENTAS POR CHOCOLATE\n\n");
+		txtReporte.append("Tipo\t\t:\t" + tipo);
+		txtReporte.append("\nCantidad de Ventas\t:\t" + menu_Principal.formatoDecimal(cantidadVentas));
+		txtReporte.append("\nCantidad total de Cajas Vendidas:\t" + menu_Principal.formatoDecimal(cantidadCajas));
+		txtReporte.append("\nImporte Total Acumulado\t:\t" + menu_Principal.formatoDecimal(importeTotal));
+		txtReporte.append("\n\n");
+	}
+
+	private void imprimirVentaOptima(String tipo, int cantidadCajas){
+		
+		if(cantidadCajas >= menu_Principal.COV){
+			
+		txtReporte.append("CHOCOLATE CON VENTA ÓPTIMA\n\n");
+		txtReporte.append("Tipo\t\t:\t" + tipo);
+		txtReporte.append("\nCantidad de Cajas Vendidas\t:\t " + cantidadCajas);
+		txtReporte.append("\n\n");
+		
+		}
+	}
+	
+// EndRegion
+}
