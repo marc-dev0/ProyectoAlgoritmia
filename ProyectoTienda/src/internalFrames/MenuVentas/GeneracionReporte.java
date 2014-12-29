@@ -116,35 +116,154 @@ public class GeneracionReporte extends JInternalFrame implements ActionListener 
 	
 		double importeTotal = VentaChocolate.totalPagoChokoBoom + VentaChocolate.totalPagoChokoLoko + VentaChocolate.totalPagoDelicia + 
 				  VentaChocolate.totalPagoExplosion + VentaChocolate.totalPagoTentacion;
-		txtReporte.setText("VENTAS POR CHOCOLATE\n\n");
+		
 		
 		switch(cboTipoReporte.getSelectedIndex()){
 		
 		case 0 : //Ventas por Chocolate
-			imprimir(menu_Principal.getTipoTentacion(), VentaChocolate.canVentasTentacion, VentaChocolate.totalCajasTentacion, VentaChocolate.totalPagoTentacion);
-			imprimir(menu_Principal.getTipoDelicia(), VentaChocolate.canVentasDelicia, VentaChocolate.totalCajasDelicia, VentaChocolate.totalPagoDelicia);
-			imprimir(menu_Principal.getTipoExplosion(), VentaChocolate.canVentasExplosion, VentaChocolate.totalCajasExplosion, VentaChocolate.totalPagoExplosion);
-			imprimir(menu_Principal.getTipoChokoLoko(), VentaChocolate.canVentasChokoLoko,VentaChocolate.totalCajasChokoLoko, VentaChocolate.totalPagoChokoLoko);
-			imprimir(menu_Principal.getTipoChokoBoom(), VentaChocolate.canVentasChokoBoom, VentaChocolate.totalCajasChokoBoom, VentaChocolate.totalPagoChokoBoom);
-			txtReporte.append("Importe total Acumulado General: \t"+ menu_Principal.formatoDecimal(importeTotal));
+			txtReporte.setText("");
+			imprimirVentasPorChocolate(menu_Principal.getTipoTentacion(), VentaChocolate.canVentasTentacion, VentaChocolate.totalCajasTentacion, VentaChocolate.totalPagoTentacion);
+			imprimirVentasPorChocolate(menu_Principal.getTipoDelicia(), VentaChocolate.canVentasDelicia, VentaChocolate.totalCajasDelicia, VentaChocolate.totalPagoDelicia);
+			imprimirVentasPorChocolate(menu_Principal.getTipoExplosion(), VentaChocolate.canVentasExplosion, VentaChocolate.totalCajasExplosion, VentaChocolate.totalPagoExplosion);
+			imprimirVentasPorChocolate(menu_Principal.getTipoChokoLoko(), VentaChocolate.canVentasChokoLoko,VentaChocolate.totalCajasChokoLoko, VentaChocolate.totalPagoChokoLoko);
+			imprimirVentasPorChocolate(menu_Principal.getTipoChokoBoom(), VentaChocolate.canVentasChokoBoom, VentaChocolate.totalCajasChokoBoom, VentaChocolate.totalPagoChokoBoom);
+			txtReporte.append("Importe total Acumulado General: \t"+ menu_Principal.formatoDecimal(importeTotal));break;
+		
 		case 1 : //Chocolates con Venta Óptima
+			txtReporte.setText("");
+			imprimirVentaOptima();break;
 			
-		case 2 : //Explosion
-			
-		case 3 : //ChokoLoko
-			
+		case 2 : //Chocolates con precios superiores al precio promedio
+			txtReporte.setText("");
+			imprimirChocolateSuperiorPromedio();break;
+		case 3 : //Chocolates con precios inferiores al precio promedio
+			txtReporte.setText("");
+			imprimirChocolateInferiorPromedio();break;
+		
 		default : //ChokoBoom
-			
+			txtReporte.setText("");
+			imprimiPrecioProMenorMayor();
 			
 		}
 		
 	}
 	
-	private void imprimir(String tipo, int cantidadVentas, int cantidadCajas, double importeTotal){
+// Region Métodos para Imprimir Reportes 
+	
+	private void imprimirVentasPorChocolate(String tipo, int cantidadVentas, int cantidadCajas, double importeTotal){
+		
+		txtReporte.append("VENTAS POR CHOCOLATE\n\n");
 		txtReporte.append("Tipo\t\t:\t" + tipo);
 		txtReporte.append("\nCantidad de Ventas\t:\t" + menu_Principal.formatoDecimal(cantidadVentas));
 		txtReporte.append("\nCantidad total de Cajas Vendidas:\t" + menu_Principal.formatoDecimal(cantidadCajas));
 		txtReporte.append("\nImporte Total Acumulado\t:\t" + menu_Principal.formatoDecimal(importeTotal));
 		txtReporte.append("\n\n");
+		
 	}
+
+	private void imprimirVentaOptima(){
+		
+		txtReporte.setText("CHOCOLATE CON VENTA ÓPTIMA\n\n");
+		
+		if(VentaChocolate.totalCajasTentacion >= menu_Principal.COV){
+			
+			
+			txtReporte.append("Tipo\t\t:\t" + menu_Principal.getTipoTentacion());
+			txtReporte.append("\nCantidad de Cajas Vendidas\t:\t" + VentaChocolate.totalCajasTentacion);
+			txtReporte.append("\n\n");
+
+		}
+		
+		if(VentaChocolate.totalCajasDelicia >= menu_Principal.COV){
+			
+			txtReporte.append("Tipo\t\t:\t" + menu_Principal.getTipoDelicia());
+			txtReporte.append("\nCantidad de Cajas Vendidas\t:\t" + VentaChocolate.totalCajasDelicia);
+			txtReporte.append("\n\n");
+			
+		}
+		
+		if(VentaChocolate.totalCajasExplosion >= menu_Principal.COV){
+			
+			txtReporte.append("Tipo\t\t:\t" + menu_Principal.getTipoExplosion());
+			txtReporte.append("\nCantidad de Cajas Vendidas\t:\t" + VentaChocolate.totalCajasExplosion);
+			txtReporte.append("\n\n");
+			
+		}
+		
+		if(VentaChocolate.totalCajasChokoLoko >= menu_Principal.COV){
+			
+			txtReporte.append("Tipo\t\t:\t" + menu_Principal.getTipoChokoLoko());
+			txtReporte.append("\nCantidad de Cajas Vendidas\t:\t" + VentaChocolate.totalCajasChokoLoko);
+			txtReporte.append("\n\n");
+			
+		}
+		
+		if(VentaChocolate.totalCajasChokoBoom >= menu_Principal.COV){
+			
+			txtReporte.append("Tipo\t\t:\t" + menu_Principal.getTipoChokoBoom());
+			txtReporte.append("\nCantidad de Cajas Vendidas\t:\t" + VentaChocolate.totalCajasChokoBoom);
+			txtReporte.append("\n\n");
+			
+		}
+
+	}
+	
+	private void imprimirChocolateSuperiorPromedio(){
+		
+		double promedio = menu_Principal.PromedioPrecioChocolate();
+		
+		txtReporte.setText("CHOCOLATES CON PRECIOS SUPERIORES AL PRECIO PROMEDIO\n");
+		
+		if (menu_Principal.precio0 > promedio) // Precio Tentación 
+			txtReporte.append("\n" + menu_Principal.getTipoTentacion());
+		
+		if (menu_Principal.precio1 > promedio) // Precio Delicia
+			txtReporte.append("\n" + menu_Principal.getTipoDelicia());
+		
+		if (menu_Principal.precio2 > promedio) // Precio Explosión
+			txtReporte.append("\n" + menu_Principal.getTipoExplosion());
+		
+		if (menu_Principal.precio3 > promedio) // Precio ChokoLoko
+			txtReporte.append("\n" + menu_Principal.getTipoChokoLoko());
+		
+		if (menu_Principal.precio4 > promedio) // Chokoboom
+			txtReporte.append("\n" + menu_Principal.getTipoChokoBoom());
+		
+		txtReporte.append("\n\nPrecio Promedio:\t"+"S/. " + promedio);
+	}
+	
+	private void imprimirChocolateInferiorPromedio(){
+		
+		double promedio = menu_Principal.PromedioPrecioChocolate();
+		
+		txtReporte.setText("CHOCOLATES CON PRECIOS SUPERIORES AL PRECIO PROMEDIO\n");
+		
+		if (menu_Principal.precio0 < promedio) // Precio Tentación 
+			txtReporte.append("\n" + menu_Principal.getTipoTentacion());
+		
+		if (menu_Principal.precio1 < promedio) // Precio Delicia
+			txtReporte.append("\n" + menu_Principal.getTipoDelicia());
+		
+		if (menu_Principal.precio2 < promedio) // Precio Explosión
+			txtReporte.append("\n" + menu_Principal.getTipoExplosion());
+		
+		if (menu_Principal.precio3 < promedio) // Precio ChokoLoko
+			txtReporte.append("\n" + menu_Principal.getTipoChokoLoko());
+		
+		if (menu_Principal.precio4 < promedio) // Chokoboom
+			txtReporte.append("\n" + menu_Principal.getTipoChokoBoom());
+		
+		txtReporte.append("\n\nPrecio Promedio:\t" + "S/. " + promedio);
+	}
+	
+	private void imprimiPrecioProMenorMayor(){
+		
+		txtReporte.setText("PRECIO PROMEDIO, MENOR Y MAYOR\n\n");
+		txtReporte.append("Precio Promedio\t:\t" + menu_Principal.PromedioPrecioChocolate());
+		txtReporte.append("\nPrecio Menor\t\t:\t" + menu_Principal.MenorPrecioChocolate());
+		txtReporte.append("\nPrecio Mayor\t\t:\t" + menu_Principal.MayorPrecioChocolate());
+	}
+
+// EndRegion
+	
 }

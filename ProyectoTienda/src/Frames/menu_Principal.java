@@ -62,7 +62,6 @@ public class menu_Principal extends JFrame implements ActionListener {
 
 	// Region Variables Globales
 
-	
 	// Region Primer tipo de Chocolate
 		public static String tipo0 = "Tentación";
 		public static int unidades0 = 24;
@@ -108,6 +107,7 @@ public class menu_Principal extends JFrame implements ActionListener {
 	// Region Obsequio
 		public static String obsequio = " Un lapicero";
 	// EndRegion
+	
 	//EndRegion
 	
 	/**
@@ -280,9 +280,11 @@ public class menu_Principal extends JFrame implements ActionListener {
 			do_mntmNewMenuItem_actionPerformed(e);
 		}
 	}
+	
 	protected void do_mntmNewMenuItem_actionPerformed(ActionEvent e) {
 		System.exit(0);
 	}
+	
 	protected void do_mntmConsultarChocolate_actionPerformed(ActionEvent e) {
 		ConsultaChocolate frmConsulta = ConsultaChocolate.getInstance();
 		AbrirFormulario(frmConsulta);
@@ -310,6 +312,7 @@ public class menu_Principal extends JFrame implements ActionListener {
 		IE.setLocation(0, 0);
 		IE.moveToFront();
 	}
+	
 	protected void do_mnu_itemVenderChoco_actionPerformed(ActionEvent e) {
 		
 		VentaChocolate frmVentaChocolate= VentaChocolate.getInstance();
@@ -463,4 +466,63 @@ public class menu_Principal extends JFrame implements ActionListener {
 	
 	// EndRegion
 	
+	// Region Método que devuelve el promedio de los precios de los chocolates
+	
+	public static double PromedioPrecioChocolate(){
+		
+		return (precio0 + precio1 + precio2 + precio3 + precio4) / 5;
+		
+	}
+
+	// EndRegion
+
+	// Region Método que devuelve el menor precio de los chocolates
+	
+	public static double MenorPrecioChocolate(){
+		double menor = 0;
+		
+		if (menor < precio0 )
+			menor = precio0;
+		
+		if(menor > precio1)
+			menor = precio1;
+		
+		if(menor > precio2)
+			menor = precio2;
+		
+		if(menor > precio3)
+			menor = precio3;
+		
+		if(menor > precio4)
+			menor = precio4;
+		
+		return menor;
+	}
+	
+	// EndRegion
+
+	// Region Método que devuelve el mayor precio de lso chocolates
+	
+	public static double MayorPrecioChocolate(){
+		double mayor = 0;
+		
+		if(mayor< precio0)
+			mayor = precio0;
+		
+		if(mayor< precio1)
+			mayor = precio1;
+		
+		if(mayor< precio2)
+			mayor = precio2;
+		
+		if(mayor< precio3)
+			mayor = precio3;
+		
+		if(mayor< precio4)
+			mayor = precio4;
+		
+		return mayor;
+	}
+	
+	// EndRegion
 }
