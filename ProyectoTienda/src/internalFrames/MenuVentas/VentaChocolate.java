@@ -17,6 +17,7 @@ import javax.swing.JTextArea;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
@@ -115,7 +116,19 @@ public class VentaChocolate extends JInternalFrame implements ActionListener {
 		}
 
 	}
+	  private void do_txtCantidad_keyTyped(KeyEvent arg0) {
+	        
+		  menu_Principal mnu = new menu_Principal();
+	        mnu.validarCampoNumerico(arg0, txtCantidad);
+	    }
+	  public void keyTyped(KeyEvent arg0) {
 
+	        if (arg0.getSource() == txtCantidad) {
+	            do_txtCantidad_keyTyped(arg0);
+	        }
+
+
+	    }
 	public static VentaChocolate getInstance(){
 		if(instance == null){
 			instance = new VentaChocolate();

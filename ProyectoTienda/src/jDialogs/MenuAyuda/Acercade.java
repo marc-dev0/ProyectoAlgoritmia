@@ -78,10 +78,12 @@ public class Acercade extends JDialog implements ActionListener {
 			{
 				lblAutores = new JLabel("<html>Miguel Ángel Rojas Coraje"
 						+ "	<br>Oscar Zuñiga Leo"
+						+ "	<br>Rojas Broncano Josué Israel"
+						+ "	<br>Bravo Toledo, Renzo Anthony"
 						+ " <br>José Mamani Salas</html>");
 				lblAutores.setFont(new Font("Times New Roman", Font.BOLD, 15));
 				
-				lblAutores.setBounds(105, 43, 245, 65);
+				lblAutores.setBounds(105, 43, 245, 97);
 				panel.add(lblAutores);
 			}
 			{

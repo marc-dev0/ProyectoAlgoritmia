@@ -24,8 +24,10 @@ import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 public class menu_Principal extends JFrame implements ActionListener {
@@ -54,32 +56,32 @@ public class menu_Principal extends JFrame implements ActionListener {
     // Region Primer tipo de Chocolate
     public static String tipo0 = "Tentación";
     public static int unidades0 = 24;
-    public static double peso0 = 720.0;
-    public static double precio0 = 50.2;
+    public static double peso0 = 720.00;
+    public static double precio0 = 50.20;
     // EndRegion
     // Region Segundo tipo de Chocolate
     public static String tipo1 = "Delicia";
     public static int unidades1 = 48;
-    public static double peso1 = 2160.0;
-    public static double precio1 = 78.5;
+    public static double peso1 = 2160.00;
+    public static double precio1 = 78.50;
     // EndRegion
     // Region Tercer tipo de Chocolate
     public static String tipo2 = "Explosión";
     public static int unidades2 = 36;
-    public static double peso2 = 1267.2;
-    public static double precio2 = 64.8;
+    public static double peso2 = 1267.20;
+    public static double precio2 = 64.80;
     // EndRegion
     // Region Cuarto tipo de Chocolate
     public static String tipo3 = "ChokoLoko";
     public static int unidades3 = 24;
-    public static double peso3 = 1684.8;
-    public static double precio3 = 52.8;
+    public static double peso3 = 1684.80;
+    public static double precio3 = 52.80;
     // EndRegion
     // Region Quinto tipo de Chocolate
     public static String tipo4 = "ChokoBoom";
     public static int unidades4 = 24;
-    public static double peso4 = 972.0;
-    public static double precio4 = 40.8;
+    public static double peso4 = 972.00;
+    public static double precio4 = 40.80;
     // EndRegion
     // Region Porcentajes
     public static double porcDes1 = 3.0;
@@ -100,7 +102,7 @@ public class menu_Principal extends JFrame implements ActionListener {
     // EndRegion
 
     public static void main(String[] args) {
-        new SplashScreen(6000);
+         new SplashScreen(6000); 
 
         EventQueue.invokeLater(new Runnable() {
 
@@ -288,7 +290,18 @@ public class menu_Principal extends JFrame implements ActionListener {
     }
 
     protected void do_mntmNewMenuItem_actionPerformed(ActionEvent e) {
-        System.exit(0);
+    	
+    	int pregunta = JOptionPane.showOptionDialog(null, "Está seguro de cerrar la aplicación?", "Aviso", 
+    			JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] { "Si", "No"}, "Si");
+    	
+    
+ 
+    	if((pregunta +1)==1)
+    			 System.exit(0);
+    		else
+    			return;
+    	
+       
     }
 
     protected void do_mntmConsultarChocolate_actionPerformed(ActionEvent e) {
@@ -464,8 +477,6 @@ public class menu_Principal extends JFrame implements ActionListener {
 
     // EndRegion
 
-    // EndRegion
-
     // Region Porcentajes de descuento
 
     public static double getDescuento1a5() {
@@ -561,15 +572,16 @@ public class menu_Principal extends JFrame implements ActionListener {
     // Region Validar que sólo se acepten ciertos caracteres definidos en el
     // método sin retorno
 
-    public void validarCampoNumerico(KeyEvent arg0) {
+    public void validarCampoNumerico(KeyEvent arg0, JTextField texto) {
 
         String c1 = String.valueOf(arg0.getKeyChar());
-        if (!(c1.matches("[0-9.,]"))) {
+        if (!(c1.matches("[\\d.,]"))
+                || (arg0.getKeyChar() == '.' && texto.getText().contains("."))) {
             arg0.consume();
             getToolkit().beep();
         }
-    }
 
+    }
     // EndRegion
 
 }
