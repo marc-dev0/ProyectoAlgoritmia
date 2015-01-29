@@ -1,5 +1,0 @@
-codeGeneration.statementId=org.eclipse.wb.core.model.statement.block
-codeGeneration.variableId=org.eclipse.wb.core.model.variable.fieldUnique
-eclipse.preferences.version=1
-property.events.codeType=2
-property.events.stubCreate=true
